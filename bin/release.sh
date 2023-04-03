@@ -19,7 +19,6 @@ VERSION=$(node --eval "console.log(require('./packages/node_modules/pouchdb/pack
 
 echo "version=${VERSION}"
 
-
 # Create a temporary build directory
 SOURCE_DIR=$(git name-rev --name-only HEAD)
 BUILD_DIR=build_"${RANDOM}"
@@ -28,12 +27,9 @@ git checkout -b $BUILD_DIR
 # Update dependency versions inside each package.json (replace the "*")
 node bin/update-package-json-for-publish.js
 
-
 # Publish all modules with Lerna
 ls packages/node_modules > release-todo.txt
 bash bin/publish-packages.sh
-
-exit 
 
 # Create git tag, which is also the Bower/Github release
 rm -fr lib src dist bower.json component.json package.json
