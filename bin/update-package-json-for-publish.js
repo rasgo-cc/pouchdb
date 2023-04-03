@@ -23,6 +23,12 @@ modules.forEach(function (mod) {
   var pkgPath = path.join(pkgDir, 'package.json');
   var pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
+  if (!pkg.name.startsWith("@rasgo")) {
+    pkg.name = "@rasgo/" + pkg.name;
+  }
+  pkg.version = topPkg.version;
+
+
   // for the dependencies, find all require() calls
   var srcFiles = glob.sync(path.join(pkgDir, 'lib/**/*.js'));
   var uniqDeps = uniq(flatten(srcFiles.map(function (srcFile) {
@@ -44,7 +50,7 @@ modules.forEach(function (mod) {
     if (topPkg.dependencies[dep]) {
       deps[dep] = topPkg.dependencies[dep];
     } else if (modules.indexOf(dep) !== -1) { // core pouchdb-* module
-      deps[dep] = topPkg.version;
+      deps["@rasgo/" + dep] = topPkg.version;
     } else {
       throw new Error('Unknown dependency ' + dep);
     }

@@ -74,7 +74,7 @@ if [[ ! -z $SERVER ]]; then
       export COUCH_HOST="http://127.0.0.1:5984"
     fi
   elif [ "$SERVER" == "pouchdb-express-router" ]; then
-    pouchdb-build-node
+    # pouchdb-build-node
     node ./tests/misc/pouchdb-express-router.js &
     export SERVER_PID=$!
     export COUCH_HOST='http://127.0.0.1:3000'

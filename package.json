@@ -1,6 +1,6 @@
 {
   "name": "pouchdb-monorepo",
-  "version": "7.0.0-prerelease",
+  "version": "7.30.1",
   "homepage": "http://pouchdb.com/",
   "license": "Apache-2.0",
   "private": true,
@@ -19,7 +19,7 @@
     "launch-dev-server": "node ./bin/dev-server.js",
     "test": "bash bin/run-test.sh",
     "prepublish": "npm run build",
-    "release": "sh bin/release.sh",
+    "release": "bash bin/release.sh",
     "install-jekyll": "sh bin/install-jekyll.sh",
     "publish-site": "sh bin/publish-site.sh",
     "build-site": "node ./bin/build-site.js",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pouchdb/pouchdb.git"
+    "url": "https://github.com/rasgo-cc/pouchdb.git"
   },
   "dependencies": {
     "abort-controller": "3.0.0",
