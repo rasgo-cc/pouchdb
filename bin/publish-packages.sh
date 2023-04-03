@@ -65,7 +65,7 @@ publish_package () {
       return 1
     fi
   else
-    if ! npm publish ; then
+    if ! npm publish --access public ; then
       return 1
     fi
   fi
