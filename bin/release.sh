@@ -11,14 +11,14 @@ else
 fi
 
 #make sure deps are up to date
-# rm -fr node_modules
-# npm install
+rm -fr node_modules
+npm install
 
 
 # Create a temporary build directory
-# SOURCE_DIR=$(git name-rev --name-only HEAD)
-# BUILD_DIR=build_"${RANDOM}"
-# git checkout -b $BUILD_DIR
+SOURCE_DIR=$(git name-rev --name-only HEAD)
+BUILD_DIR=build_"${RANDOM}"
+git checkout -b $BUILD_DIR
 
 # Update dependency versions inside each package.json (replace the "*")
 node bin/update-package-json-for-publish.js
@@ -28,8 +28,8 @@ exit
 VERSION=$(node --eval "console.log(require('./packages/node_modules/@rasgo/pouchdb/package.json').version);")
 echo "VERSION=${VERSION}"
 
-# Publish all modules with Lerna
-ls packages/node_modules > release-todo.txt
+# Publish all modules 
+ls packages/node_modules/@rasgo > release-todo.txt
 bash bin/publish-packages.sh
 
 # Create git tag, which is also the Bower/Github release
@@ -43,12 +43,12 @@ git commit -m "build $VERSION"
 # Only "publish" to GitHub/Bower if this is a non-beta non-dry run
 if [ -z $DRY_RUN ]; then
  if [ -z $BETA ]; then
-    # Tag and push
-    git tag $VERSION
-    git push --tags git@github.com:rasgo-cc/pouchdb.git $VERSION
-
     # Cleanup
     git checkout $SOURCE_DIR
     git branch -D $BUILD_DIR
+
+    # Tag (on the main branch) and push
+    git tag $VERSION
+    git push --tags git@github.com:rasgo-cc/pouchdb.git $VERSION
   fi
 fi
