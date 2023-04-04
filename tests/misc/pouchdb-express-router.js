@@ -26,6 +26,6 @@ app.use(function (req, res, next) {
   }
 });
 
-app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
+app.use(require('pouchdb-express-router')(PouchDB));
 
 app.listen(process.env.PORT || 3000);

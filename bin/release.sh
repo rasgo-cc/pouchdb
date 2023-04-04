@@ -11,11 +11,8 @@ else
 fi
 
 #make sure deps are up to date
-if [ -z SKIP_BUILD ]; then
-  rm -fr node_modules
-  npm install
-fi
-
+rm -fr node_modules
+npm install
 
 # Create a temporary build directory
 SOURCE_DIR=$(git name-rev --name-only HEAD)

@@ -8,7 +8,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.get('*', countLocalGETs);
-app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
+app.use(require('pouchdb-express-router')(PouchDB));
 
 var localGETCount = 0;
 

@@ -83,7 +83,7 @@ commonUtils.loadPouchDB = function (opts) {
 
 commonUtils.loadPouchDBForNode = function (plugins) {
   var params = commonUtils.params();
-  var scriptPath = '../packages/node_modules';
+  var scriptPath = '../packages/node_modules/@rasgo';
 
   var pouchdbSrc = params.COVERAGE
     ? `${scriptPath}/pouchdb-for-coverage`

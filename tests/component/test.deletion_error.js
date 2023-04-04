@@ -20,7 +20,7 @@ app.delete('*', function (req, res, next) {
   next();
 });
 
-app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
+app.use(require('pouchdb-express-router')(PouchDB));
 
 describe('test.deletion_error.js', function () {
   var server;

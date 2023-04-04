@@ -27,7 +27,7 @@ function reject(req, res, next) {
 app.post('*', reject);
 app.delete('*', reject);
 app.put('*', reject);
-app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
+app.use(require('pouchdb-express-router')(PouchDB));
 
 require('chai').should();
 
