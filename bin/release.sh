@@ -11,17 +11,18 @@ else
 fi
 
 #make sure deps are up to date
-rm -fr node_modules
-npm install
+# rm -fr node_modules
+# npm install
 
 
 # Create a temporary build directory
-SOURCE_DIR=$(git name-rev --name-only HEAD)
-BUILD_DIR=build_"${RANDOM}"
-git checkout -b $BUILD_DIR
+# SOURCE_DIR=$(git name-rev --name-only HEAD)
+# BUILD_DIR=build_"${RANDOM}"
+# git checkout -b $BUILD_DIR
 
 # Update dependency versions inside each package.json (replace the "*")
 node bin/update-package-json-for-publish.js
+exit
 
 # get current version
 VERSION=$(node --eval "console.log(require('./packages/node_modules/@rasgo/pouchdb/package.json').version);")

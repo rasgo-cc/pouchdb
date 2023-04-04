@@ -16,16 +16,13 @@ var uniq = require('lodash.uniq');
 var flatten = require('lodash.flatten');
 
 var topPkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-var modules = fs.readdirSync('./packages/node_modules');
+var modules = fs.readdirSync('./packages/node_modules/@rasgo');
 
 modules.forEach(function (mod) {
-  var pkgDir = path.join('./packages/node_modules', mod);
+  var pkgDir = path.join('./packages/node_modules/@rasgo', mod);
   var pkgPath = path.join(pkgDir, 'package.json');
   var pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
-  if (!pkg.name.startsWith("@rasgo")) {
-    pkg.name = "@rasgo/" + pkg.name;
-  }
   pkg.version = topPkg.version;
 
 
@@ -45,12 +42,14 @@ modules.forEach(function (mod) {
       builtinModules.indexOf(dep) === -1;
   }).sort();
 
+
   var deps = pkg.dependencies = {};
   uniqDeps.forEach(function (dep) {
     if (topPkg.dependencies[dep]) {
       deps[dep] = topPkg.dependencies[dep];
-    } else if (modules.indexOf(dep) !== -1) { // core pouchdb-* module
-      deps["@rasgo/" + dep] = topPkg.version;
+    } else if (modules.indexOf(dep.replace("@rasgo/", "")) !== -1) { 
+      // core pouchdb-* module
+      deps[dep] = topPkg.version;
     } else {
       throw new Error('Unknown dependency ' + dep);
     }
