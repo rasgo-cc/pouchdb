@@ -11,8 +11,10 @@ else
 fi
 
 #make sure deps are up to date
-rm -fr node_modules
-npm install
+if [ -z SKIP_BUILD ]; then
+  rm -fr node_modules
+  npm install
+fi
 
 
 # Create a temporary build directory
@@ -34,20 +36,20 @@ bash bin/publish-packages.sh
 # Create git tag, which is also the Bower/Github release
 rm -fr lib src dist bower.json component.json package.json
 cp -r packages/node_modules/@rasgo/pouchdb/{src,lib,dist,bower.json,component.json,package.json} .
+
 git add -f lib src dist *.json
 git rm -fr packages bin docs scripts tests
-
 git commit -m "build $VERSION"
 
 # Only "publish" to GitHub/Bower if this is a non-beta non-dry run
 if [ -z $DRY_RUN ]; then
  if [ -z $BETA ]; then
+    # Tag and push
+    git tag $VERSION
+    git push --tags git@github.com:pouchdb/pouchdb.git $VERSION
+
     # Cleanup
     git checkout $SOURCE_DIR
     git branch -D $BUILD_DIR
-
-    # Tag (on the main branch) and push
-    git tag $VERSION
-    git push --tags git@github.com:rasgo-cc/pouchdb.git $VERSION
   fi
 fi
