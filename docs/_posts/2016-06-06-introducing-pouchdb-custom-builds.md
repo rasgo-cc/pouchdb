@@ -58,13 +58,13 @@ With this release, we are also committing to the `jsnext:main` standard [as prom
 PouchDB now ships with a few presets, which are a good demonstration of how the new plugin feature works. Here's `pouchdb-browser` (as CommonJS), which is the "browser" version of PouchDB:
 
 ```js
-var PouchDB = require('pouchdb-core');
+var PouchDB = require('@rasgo/pouchdb-core');
 
-PouchDB.plugin(require('pouchdb-adapter-idb'))
-  .plugin(require('pouchdb-adapter-websql'))
-  .plugin(require('pouchdb-adapter-http'))
-  .plugin(require('pouchdb-mapreduce'))
-  .plugin(require('pouchdb-replication'));
+PouchDB.plugin(require('@rasgo/pouchdb-adapter-idb'))
+  .plugin(require('@rasgo/pouchdb-adapter-websql'))
+  .plugin(require('@rasgo/pouchdb-adapter-http'))
+  .plugin(require('@rasgo/pouchdb-mapreduce'))
+  .plugin(require('@rasgo/pouchdb-replication'));
 
 module.exports = PouchDB;
 ```
@@ -74,12 +74,12 @@ As you can see, `pouchdb-browser` is just an extension of `pouchdb-core`, with s
 Additionally, you'll notice that `pouchdb-browser` does not depend on LevelDB at all. Instead, that lives in `pouchdb-node`, a.k.a. the "Node" version of PouchDB:
 
 ```js
-var PouchDB = require('pouchdb-core');
+var PouchDB = require('@rasgo/pouchdb-core');
 
-PouchDB.plugin(require('pouchdb-adapter-leveldb'))
-  .plugin(require('pouchdb-adapter-http'))
-  .plugin(require('pouchdb-mapreduce'))
-  .plugin(require('pouchdb-replication'));
+PouchDB.plugin(require('@rasgo/pouchdb-adapter-leveldb'))
+  .plugin(require('@rasgo/pouchdb-adapter-http'))
+  .plugin(require('@rasgo/pouchdb-mapreduce'))
+  .plugin(require('@rasgo/pouchdb-replication'));
 
 module.exports = PouchDB;
 ```
@@ -89,15 +89,15 @@ The only difference here is that `pouchdb-browser` uses IndexedDB and WebSQL, wh
 Also, if you'd like to use a custom adapter, those are now shipped separately. So if you want to use PouchDB in a purely in-memory mode, you can do:
 
 ```js
-var PouchDB = require('pouchdb-core')
-  .plugin(require('pouchdb-adapter-memory'));
+var PouchDB = require('@rasgo/pouchdb-core')
+  .plugin(require('@rasgo/pouchdb-adapter-memory'));
 ```
 
 Or if you're only using PouchDB to talk to CouchDB:
 
 ```js
-var PouchDB = require('pouchdb-core')
-  .plugin(require('pouchdb-adapter-http'));
+var PouchDB = require('@rasgo/pouchdb-core')
+  .plugin(require('@rasgo/pouchdb-adapter-http'));
 ```
 
 This applies to all of the plugins we previously shipped in the ["extras" API](http://pouchdb.com/api.html#extras). Any of these can now be mixed and matched as desired:
@@ -110,11 +110,11 @@ This applies to all of the plugins we previously shipped in the ["extras" API](h
 Note that the plugin order of the non-HTTP adapters matters. So for instance, if you wanted to fall back from IndexedDB to WebSQL to LocalStorage to in-memory, you would do:
 
 ```js
-var PouchDB = require('pouchdb-core')
-  .plugin(require('pouchdb-adapter-idb'))
-  .plugin(require('pouchdb-adapter-websql'))
-  .plugin(require('pouchdb-adapter-localstorage'))
-  .plugin(require('pouchdb-adapter-memory'));
+var PouchDB = require('@rasgo/pouchdb-core')
+  .plugin(require('@rasgo/pouchdb-adapter-idb'))
+  .plugin(require('@rasgo/pouchdb-adapter-websql'))
+  .plugin(require('@rasgo/pouchdb-adapter-localstorage'))
+  .plugin(require('@rasgo/pouchdb-adapter-memory'));
 ```
 
 This also opens up the possibility of more easily including custom third-party adapters, such

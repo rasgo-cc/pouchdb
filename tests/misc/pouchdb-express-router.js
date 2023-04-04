@@ -5,7 +5,7 @@ var DB_FILES_DIR = './tmp';
 var fs = require('fs');
 var express = require('express');
 var app = express();
-var PouchDB = require('../../packages/node_modules/pouchdb').defaults({
+var PouchDB = require('../../packages/node_modules/@rasgo/pouchdb').defaults({
   prefix: DB_FILES_DIR
 });
 
@@ -26,6 +26,6 @@ app.use(function (req, res, next) {
   }
 });
 
-app.use(require('pouchdb-express-router')(PouchDB));
+app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
 
 app.listen(process.env.PORT || 3000);

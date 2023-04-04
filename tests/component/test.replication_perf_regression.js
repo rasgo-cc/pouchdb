@@ -1,6 +1,6 @@
 'use strict';
 
-var PouchDB = require('../../packages/node_modules/pouchdb-for-coverage');
+var PouchDB = require('../../packages/node_modules/@rasgo/pouchdb-for-coverage');
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -8,7 +8,7 @@ var app = express();
 
 app.use(bodyParser.json());
 app.get('*', countLocalGETs);
-app.use(require('pouchdb-express-router')(PouchDB));
+app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
 
 var localGETCount = 0;
 

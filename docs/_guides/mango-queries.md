@@ -36,8 +36,8 @@ If you are using Node, Browserify, Webpack, Rollup, etc., then you can install i
 Then in code:
 
 ```js
-var PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-find'));
+var PouchDB = require('@rasgo/pouchdb');
+PouchDB.plugin(require('@rasgo/pouchdb-find'));
 ```
 
 {% include anchor.html title="Query language" hash="query-language" %}

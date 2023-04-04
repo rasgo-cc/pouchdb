@@ -56,7 +56,7 @@ You can load plugins into PouchDB when you load it via `require()`.
 {% highlight js %}
 var greet = {sayHello: function() { console.log("Hello!"); }};
 
-var PouchDB = require('pouchdb').plugin(greet);
+var PouchDB = require('@rasgo/pouchdb').plugin(greet);
 
 var db = new PouchDB('foobar');
 db.sayHello(); // prints "Hello!"
@@ -68,7 +68,7 @@ You can chain plugins, as well:
 var greet = {sayHello: function() { console.log("Hello!"); }};
 var manners = {thank: function(name) { console.log("Thank you, " + name); }};
 
-var PouchDB = require('pouchdb')
+var PouchDB = require('@rasgo/pouchdb')
   .plugin(greet)
   .plugin(manners);
 

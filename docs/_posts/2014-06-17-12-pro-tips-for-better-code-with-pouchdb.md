@@ -122,7 +122,7 @@ I already wrote [a blog post about this](http://pouchdb.com/2014/05/01/secondary
 Also, if you really want to get fancy with your doc IDs, you can use [PouchDB Collate](https://github.com/pouchdb/collate/) to serialize arbitrary data into strings that are sorted according to [CouchDB collation ordering](https://docs.couchdb.org/en/latest/ddocs/views/collation.html).  This allows you to index on arrays, objects, numbers &ndash; whatever you want:
 
 ```js
-var pouchCollate = require('pouchdb-collate');
+var pouchCollate = require('@rasgo/pouchdb-collate');
 var myDoc = {
   firstName: 'Scrooge',
   lastName: 'McDuck',

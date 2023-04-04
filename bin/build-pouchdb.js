@@ -21,7 +21,7 @@ var doUglify = buildUtils.doUglify;
 var doBrowserify = buildUtils.doBrowserify;
 var writeFile = buildUtils.writeFile;
 
-var pkg = require('../packages/node_modules/pouchdb/package.json');
+var pkg = require('../packages/node_modules/@rasgo/pouchdb/package.json');
 var version = pkg.version;
 
 var builtInModules = require('builtin-modules');
@@ -139,7 +139,7 @@ function buildPluginsForBrowser() {
     return doBrowserify('pouchdb', source, {}, 'pouchdb').then(function (code) {
       code = comments[plugin] + code;
       return all([
-        writeFile('packages/node_modules/pouchdb/dist/pouchdb.' + plugin + '.js', code),
+        writeFile('packages/node_modules/@rasgo/pouchdb/dist/pouchdb.' + plugin + '.js', code),
         doUglify('pouchdb', code, comments[plugin], 'dist/pouchdb.' + plugin + '.min.js')
       ]);
     });

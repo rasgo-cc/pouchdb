@@ -24,7 +24,7 @@ git checkout -b $BUILD_DIR
 node bin/update-package-json-for-publish.js
 
 # get current version
-VERSION=$(node --eval "console.log(require('./packages/node_modules/pouchdb/package.json').version);")
+VERSION=$(node --eval "console.log(require('./packages/node_modules/@rasgo/pouchdb/package.json').version);")
 echo "VERSION=${VERSION}"
 
 # Publish all modules with Lerna
@@ -33,7 +33,7 @@ bash bin/publish-packages.sh
 
 # Create git tag, which is also the Bower/Github release
 rm -fr lib src dist bower.json component.json package.json
-cp -r packages/node_modules/pouchdb/{src,lib,dist,bower.json,component.json,package.json} .
+cp -r packages/node_modules/@rasgo/pouchdb/{src,lib,dist,bower.json,component.json,package.json} .
 git add -f lib src dist *.json
 git rm -fr packages bin docs scripts tests
 

@@ -14,7 +14,7 @@ bower_components
 tests/integration/cordova/www
 tests/pouchdb_server
 tests/performance-bundle.js
-packages/node_modules/pouchdb/dist/*
+packages/node_modules/@rasgo/pouchdb/dist/*
 pouchdb-webpack.js
 lib
 lib_unit

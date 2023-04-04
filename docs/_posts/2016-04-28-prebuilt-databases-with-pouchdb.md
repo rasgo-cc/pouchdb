@@ -72,7 +72,7 @@ So let's write a short Node script to do that:
 
 ```js
 // load PouchDB with the optional node-websql adapter
-var PouchDB = require('pouchdb').plugin(require('pouchdb-adapter-node-websql'));
+var PouchDB = require('@rasgo/pouchdb').plugin(require('@rasgo/pouchdb-adapter-node-websql'));
 
 // set up our databases - make sure the URL is correct!
 var inputDB = new PouchDB('http://localhost:5984/turtles');

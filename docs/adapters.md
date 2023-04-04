@@ -129,7 +129,7 @@ $ npm install pouchdb-adapter-memory
 then:
 
 ```js
-PouchDB.plugin(require('pouchdb-adapter-memory'));
+PouchDB.plugin(require('@rasgo/pouchdb-adapter-memory'));
 var pouch = new PouchDB('myDB', {adapter: 'memory'});
 ```
 
@@ -141,8 +141,8 @@ You can also use PouchDB over [SQLite3](https://github.com/mapbox/node-sqlite3) 
 [node-websql](https://github.com/nolanlawson/node-websql):
 
 ```js
-var PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-adapter-node-websql'));
+var PouchDB = require('@rasgo/pouchdb');
+PouchDB.plugin(require('@rasgo/pouchdb-adapter-node-websql'));
 
 var db = new PouchDB('mydatabase.db', {adapter: 'websql'});
 ```

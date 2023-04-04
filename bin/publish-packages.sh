@@ -43,9 +43,9 @@ publish_packages () {
 should_publish () {
   local pkg="$1"
 
-  if [ ! -d "packages/node_modules/$pkg" ]; then
+  if [ ! -d "packages/node_modules/@rasgo/$pkg" ]; then
     return 1
-  elif [ "true" = $(node --eval "console.log(require('./packages/node_modules/$pkg/package.json').private);") ]; then
+  elif [ "true" = $(node --eval "console.log(require('./packages/node_modules/@rasgo/$pkg/package.json').private);") ]; then
     return 1
   else
     return 0
@@ -55,7 +55,7 @@ should_publish () {
 publish_package () {
   local pkg="$1"
 
-  cd "packages/node_modules/$pkg"
+  cd "packages/node_modules/@rasgo/$pkg"
   echo "Publishing $pkg..."
 
   if [ -n "$DRY_RUN" ]; then

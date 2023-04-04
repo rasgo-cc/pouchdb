@@ -4263,7 +4263,7 @@ PouchDBVersion110.adapter('https', httpAdapter);
 
 PouchDBVersion110.adapter('idb', require('./adapters/idb'));
 PouchDBVersion110.adapter('websql', require('./adapters/websql'));
-PouchDBVersion110.plugin('mapreduce', require('pouchdb-mapreduce'));
+PouchDBVersion110.plugin('mapreduce', require('@rasgo/pouchdb-mapreduce'));
 
 if (!process.browser) {
   var ldbAdapter = require('./adapters/leveldb');
@@ -5499,7 +5499,7 @@ process.chdir = function (dir) {
 
 "use strict";
 
-var pouchCollate = require('pouchdb-collate');
+var pouchCollate = require('@rasgo/pouchdb-collate');
 
 // This is the first implementation of a basic plugin, we register the
 // plugin object with pouch and it is mixin'd to each database created

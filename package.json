@@ -1,5 +1,5 @@
 {
-  "name": "pouchdb-monorepo",
+  "name": "@rasgo/pouchdb-monorepo",
   "version": "7.30.2",
   "homepage": "http://pouchdb.com/",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     "test-fuzzy": "TYPE=fuzzy npm run test",
     "test-browser": "npm run build-test && node ./bin/test-browser.js",
     "test-memleak": "mocha -gc tests/memleak",
-    "eslint": "eslint bin/ packages/node_modules/**/src tests/",
+    "eslint": "eslint bin/ packages/node_modules/@rasgo/**/src tests/",
     "dev": "bash bin/run-dev.sh",
     "launch-dev-server": "node ./bin/dev-server.js",
     "test": "bash bin/run-test.sh",

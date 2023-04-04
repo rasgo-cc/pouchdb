@@ -29,7 +29,7 @@ PouchDB can be installed through [npm](http://npmjs.com):
 After installing, call `require()` to use it:
 
 {% highlight javascript %}
-var PouchDB = require('pouchdb');
+var PouchDB = require('@rasgo/pouchdb');
 var db = new PouchDB('my_database');
 {% endhighlight %}
 
@@ -43,7 +43,7 @@ faster install times:
 {% highlight bash %}npm install --save pouchdb-browser{% endhighlight %}
 
 {% highlight javascript %}
-var PouchDB = require('pouchdb-browser');
+var PouchDB = require('@rasgo/pouchdb-browser');
 var db = new PouchDB('my_database');
 {% endhighlight %}
 

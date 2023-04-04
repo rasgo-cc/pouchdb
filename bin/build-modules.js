@@ -12,7 +12,7 @@ var buildModule = require('./build-module');
 var buildPouchDB = require('./build-pouchdb');
 
 function buildPackage(pkg) {
-  return stat(path.resolve('packages/node_modules', pkg)).then(function (stat) {
+  return stat(path.resolve('packages/node_modules/@rasgo', pkg)).then(function (stat) {
     if (!stat.isDirectory()) { // skip e.g. 'npm-debug.log'
       return;
     }
@@ -20,12 +20,12 @@ function buildPackage(pkg) {
     if (pkg === 'pouchdb') {
       return buildPouchDB();
     } else {
-      return buildModule(path.resolve('./packages/node_modules', pkg));
+      return buildModule(path.resolve('./packages/node_modules/@rasgo', pkg));
     }
   });
 }
 
-readDir('packages/node_modules').then(function (packages) {
+readDir('packages/node_modules/@rasgo').then(function (packages) {
   return Promise.all(packages.map(buildPackage)).catch(function (err) {
     console.error('build error');
     console.error(err.stack);

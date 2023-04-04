@@ -32,7 +32,7 @@ If you like to live on the bleeding edge, you can build PouchDB from source usin
     cd pouchdb
     npm install
 
-After running these steps, the browser build can be found in `packages/node_modules/pouchdb/dist/pouchdb.js`.
+After running these steps, the browser build can be found in `packages/node_modules/@rasgo/pouchdb/dist/pouchdb.js`.
 
 Changelog
 ----

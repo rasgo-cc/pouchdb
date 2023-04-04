@@ -1,6 +1,6 @@
 'use strict';
 
-var PouchDB = require('../../packages/node_modules/pouchdb-for-coverage');
+var PouchDB = require('../../packages/node_modules/@rasgo/pouchdb-for-coverage');
 var Checkpointer = PouchDB.utils.checkpointer;
 
 var express = require('express');
@@ -27,7 +27,7 @@ function reject(req, res, next) {
 app.post('*', reject);
 app.delete('*', reject);
 app.put('*', reject);
-app.use(require('pouchdb-express-router')(PouchDB));
+app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
 
 require('chai').should();
 

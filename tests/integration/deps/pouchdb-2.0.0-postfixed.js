@@ -7496,7 +7496,7 @@ function collationIndex(x) {
 
 },{}],37:[function(_dereq_,module,exports){
 module.exports={
-  "name": "pouchdb",
+  "name": "@rasgo/pouchdb",
   "version": "2.0.0",
   "description": "PouchDBVersion200 is a pocket-sized database.",
   "release": "nightly",

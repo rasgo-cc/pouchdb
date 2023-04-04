@@ -18,7 +18,7 @@ pouchdb-setup-server() {
   npm install pouchdb-server
   cd ..
 
-  for pkg in packages/node_modules/* ; do
+  for pkg in packages/node_modules/@rasgo/* ; do
     pouchdb-link-server-modules "$(basename "$pkg")"
   done
 
@@ -33,7 +33,7 @@ pouchdb-setup-server() {
 pouchdb-link-server-modules() {
   local pkg="$1"
 
-  cd "packages/node_modules/${pkg}"
+  cd "packages/node_modules/@rasgo/${pkg}"
   npm link
   cd ../../../pouchdb-server-install/
 

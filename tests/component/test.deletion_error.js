@@ -1,6 +1,6 @@
 'use strict';
 
-var PouchDB = require('../../packages/node_modules/pouchdb-for-coverage');
+var PouchDB = require('../../packages/node_modules/@rasgo/pouchdb-for-coverage');
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -20,7 +20,7 @@ app.delete('*', function (req, res, next) {
   next();
 });
 
-app.use(require('pouchdb-express-router')(PouchDB));
+app.use(require('@rasgo/pouchdb-express-router')(PouchDB));
 
 describe('test.deletion_error.js', function () {
   var server;

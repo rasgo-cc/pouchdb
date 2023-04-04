@@ -26,18 +26,19 @@ var all = Promise.all.bind(Promise);
 // through aggressive bundling, ala pouchdb, because it's assumed that
 // for these packages bundle size is more important than modular deduping
 var AGGRESSIVELY_BUNDLED_PACKAGES =
-  ['pouchdb-for-coverage', 'pouchdb-node', 'pouchdb-browser'];
+  ['@rasgo/pouchdb-for-coverage', '@rasgo/pouchdb-node', '@rasgo/pouchdb-browser'];
 // packages that only have a browser version
 var BROWSER_ONLY_PACKAGES =
-  ['pouchdb-browser'];
+  ['@rasgo/pouchdb-browser'];
 // packages that only use the browser field to ignore dependencies
 var BROWSER_DEPENDENCY_ONLY_PACKAGES =
-  ['pouchdb-adapter-leveldb'];
+  ['@rasgo/pouchdb-adapter-leveldb'];
 
 function buildModule(filepath) {
   var pkg = require(path.resolve(filepath, 'package.json'));
-  var topPkg = require(path.resolve(filepath, '../../../package.json'));
-  var pouchdbPackages = fs.readdirSync(path.resolve(filepath, '..'));
+  var topPkg = require(path.resolve(filepath, '../../../../package.json'));
+  var pouchdbPackages = fs.readdirSync(path.resolve(filepath, '..')).map(p => `@rasgo/${p}`);
+
   // All external modules are assumed to be CommonJS, and therefore should
   // be skipped by Rollup. We may revisit this later.
   var depsToSkip = Object.keys(topPkg.dependencies || {})

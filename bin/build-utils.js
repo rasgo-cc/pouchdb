@@ -15,7 +15,7 @@ var streamToPromise = require('stream-to-promise');
 var terser = require("terser");
 
 function addPath(pkgName, otherPath) {
-  return path.resolve('packages/node_modules/' + pkgName, otherPath);
+  return path.resolve('packages/node_modules/@rasgo/' + pkgName, otherPath);
 }
 
 function writeFile(filename, contents) {
