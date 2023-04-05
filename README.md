@@ -3,7 +3,7 @@
 
 ---
 
-##### !!! This is a fork based of PouchDB 7.3.1 !!!
+#### !!! This is a fork based of PouchDB 7.3.1 !!!
 
 All packages have a `@rasgo/` prefix to distinguish them from the official ones. 
 The main motivation for this fork was to have a higher control of releases, bug fixing and what gets merged into the repo.
