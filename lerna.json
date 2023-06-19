@@ -1,0 +1,5 @@
+{
+  "packages": ["packages/node_modules/*"],
+  "useWorkspaces": false,
+  "version": "0.0.0"
+}
