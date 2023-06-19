@@ -1,6 +1,7 @@
 tmp*
 .DS_Store
 /node_modules
+/packages/node_modules/pouchdb/node_modules
 docs/_site
 docs/static/css
 docs/.jekyll-cache
@@ -27,3 +28,4 @@ package-lock.json
 yarn.lock
 /.eslintcache
 release-todo.txt
+
